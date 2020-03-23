@@ -1,0 +1,6 @@
+{
+  "baseUrl": {
+    "android": "http://10.0.2.2:8081",
+    "iOS": "http://localhost:8081"
+  }
+}

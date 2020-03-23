@@ -1,0 +1,6 @@
+{
+  "baseUrl": {
+    "android": "https://swapi.co/api",
+    "iOS": "https://swapi.co/api"
+  }
+}

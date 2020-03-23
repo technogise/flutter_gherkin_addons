@@ -1,25 +1,30 @@
 import 'dart:collection';
 import 'dart:io';
 import 'package:mock_web_server/mock_web_server.dart';
+
 class Stubber {
   MockWebServer _mockWebServer = MockWebServer(port: 8081);
-  HashMap<String,Stub> stubs=HashMap();
+  HashMap<String, Stub> stubs = HashMap();
   start() async {
     await _mockWebServer.start();
     _mockWebServer.dispatcher = _dispatcher;
   }
+
   stop() async {
     return _mockWebServer.shutdown();
   }
-  stub(Stub stub){
-    stubs[stub.to_key()] = stub;
+
+  stub(Stub stub) {
+    stubs[stub.toKey()] = stub;
   }
-  _request_to_key(HttpRequest request){
+
+  _requestToKey(HttpRequest request) {
     return request.method + ":" + request.uri.toString();
   }
+
   Future<MockResponse> _dispatcher(HttpRequest request) async {
-    if( stubs.containsKey(_request_to_key(request))){
-      var _stub=stubs[_request_to_key(request)];
+    if (stubs.containsKey(_requestToKey(request))) {
+      var _stub = stubs[_requestToKey(request)];
       return MockResponse()
         ..httpCode = _stub._response._statusCode
         ..body = _stub._response._body
@@ -27,18 +32,21 @@ class Stubber {
     }
     return _defaultAnswer;
   }
+
   get _defaultAnswer => MockResponse()..httpCode = 404;
 }
-class Stub{
+
+class Stub {
   final String url;
   final String method;
   final Response _response;
 
-  Stub(this.method,this.url, this._response);
-  String to_key(){
+  Stub(this.method, this.url, this._response);
+  String toKey() {
     return this.method + ":" + this.url;
   }
 }
+
 class Response {
   int _statusCode;
   String _body;
