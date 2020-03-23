@@ -2,7 +2,7 @@ name: flutter_gherkin_addons
 description: Addons for flutter Gherkin Development
 version: 0.0.1
 author:
-homepage:
+homepage: https://github.com/technogise/flutter_gherkin_addons
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,6 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  gherkin: ^1.1.7
+  mock_web_server: ^4.1.1
+  flutter_gherkin: ^1.0.4
+  path: ^1.6.4
+  glob: ^1.2.0
 
 dev_dependencies:
   flutter_test:

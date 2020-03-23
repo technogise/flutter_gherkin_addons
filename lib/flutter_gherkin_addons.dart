@@ -1,7 +1,7 @@
 library flutter_gherkin_addons;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'given.dart';
+export 'when.dart';
+export 'then.dart';
+export 'wrapper.dart';
+export 'stubber.dart';

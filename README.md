@@ -1,4 +1,4 @@
-# fluttergherkinaddons
+# flutter_gherkin_addons
 
 Addons for flutter Gherkin Development
 
