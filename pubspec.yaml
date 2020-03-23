@@ -1,12 +1,13 @@
 name: flutter_gherkin_addons
 description: A Library for set of addons that can be used with flutter gherkin prominant of them being 1. Dynamic Stubbing utility 2. One line configuration 3.DSL for gherkin steps
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/technogise/flutter_gherkin_addons
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  yaml: ^2.2.0
   flutter:
     sdk: flutter
   flutter_driver:

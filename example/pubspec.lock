@@ -119,10 +119,10 @@ packages:
   flutter_gherkin_addons:
     dependency: "direct dev"
     description:
-      name: flutter_gherkin_addons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
+      path: ".."
+      relative: true
+    source: path
+    version: "0.1.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
