@@ -4,7 +4,7 @@ import '../steps/details_page_steps.dart';
 import '../steps/home_page_steps.dart';
 import 'steps/mocking_steps.dart';
 Future<void> main() async {
-  return Bootstrapper.start(
+  return TestRuntime.start(
       [
         start(),
         whenINavigateToPersonaList(),

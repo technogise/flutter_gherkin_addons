@@ -9,8 +9,11 @@ import 'dart:io' show Platform;
 
 import 'package:yaml/yaml.dart';
 
-class Bootstrapper {
-  static Stubber stubber;
+class TestRuntime {
+  static Stubber _stubber;
+  static addStub(Stub stub){
+    _stubber.stub(stub);
+  }
   static Future<void> start(Iterable<StepDefinitionBase> steps) async {
     String path = dirname(Platform.script.toString());
     int index = path.indexOf("test_driver");
@@ -24,7 +27,7 @@ class Bootstrapper {
       ProgressReporter(),
       TestRunSummaryReporter()
     ];
-    stubber = Stubber();
+    _stubber = Stubber();
     var config = FlutterTestConfiguration()
       ..features = [Glob("$dir/features/**.feature")]
       ..reporters = reporters
@@ -33,9 +36,9 @@ class Bootstrapper {
       ..targetAppPath = "$dir/app.dart"
       ..exitAfterTestRun = true;
     if(mapConfig['stubbing']) {
-      await stubber.start();
+      await _stubber.start();
       await GherkinRunner().execute(config);
-      return await stubber.stop();
+      return await _stubber.stop();
     } else {
       return await GherkinRunner().execute(config);
     }

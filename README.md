@@ -35,7 +35,7 @@ import 'dart:async';
 import 'package:flutter_gherkin_addons/wrapper.dart';
 import 'steps/mocking_steps.dart';
 Future<void> main() async {
-  return Bootstrapper.start(
+  return TestRuntime.start(
       [
         ... your step definition functions
       ]
@@ -76,7 +76,7 @@ GenericGiven1 givenFollowingUserExists(){
         eye_color: row.columns.elementAt(3),
       ));
     }
-    Bootstrapper.stubber.stub(Stub("GET","/people",Response(200,json.encode({
+    TestRuntime.addStub(StubFor.staticHttpGet("/people",Response(200,json.encode({
       "results":persons
     }),headers: {"Content-Type":"application/json"})));
   });

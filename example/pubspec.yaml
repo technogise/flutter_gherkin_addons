@@ -27,7 +27,7 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
-  flutter_gherkin_addons: 0.1.2
+  flutter_gherkin_addons: 0.1.4
 #  flutter_gherkin_addons:
 #    path: ../
   flutter_driver:

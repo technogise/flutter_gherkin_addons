@@ -3,5 +3,5 @@
 ## [0.1.1] - Adds Description and example
 ## [0.1.2] - Makes Bootrapper configurable
 ## [0.1.3] - Adds readme to package
+## [0.1.4] - Makes Dynamic Stubbing possible with lambda
 
-* TODO: Describe initial release.
