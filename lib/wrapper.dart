@@ -14,12 +14,19 @@ class TestRuntime {
   static addStub(Stub stub){
     _stubber.stub(stub);
   }
-  static Future<void> start(Iterable<StepDefinitionBase> steps) async {
+  static Future<void> start(Iterable<StepDefinitionBase> steps,[Iterable<Hook> hooks]) async {
     String path = dirname(Platform.script.toString());
     int index = path.indexOf("test_driver");
     String dir = path.substring(index);
     Map mapConfig = loadYaml(new File("$dir/config.yaml").readAsStringSync());
-    var reporters=mapConfig['reporting']?[
+    List<Hook> arrHooks=[];
+    if(hooks!=null){
+      arrHooks.addAll(hooks);
+    }
+    if(mapConfig['screenshots']!=null && mapConfig['screenshots']){
+      arrHooks.add(AttachScreenshotOnFailedStepHook());
+    }
+    var reporters=mapConfig['reporting']!=null && mapConfig['reporting']?[
       ProgressReporter(),
       TestRunSummaryReporter(),
       JsonReporter(path: testOutputsDirectory + '/report.json')
@@ -30,12 +37,13 @@ class TestRuntime {
     _stubber = Stubber();
     var config = FlutterTestConfiguration()
       ..features = [Glob("$dir/features/**.feature")]
+      ..hooks = arrHooks
       ..reporters = reporters
       ..stepDefinitions = steps
       ..restartAppBetweenScenarios = true
       ..targetAppPath = "$dir/app.dart"
       ..exitAfterTestRun = true;
-    if(mapConfig['stubbing']) {
+    if(mapConfig['stubbing']!=null && mapConfig['stubbing']) {
       await _stubber.start();
       await GherkinRunner().execute(config);
       return await _stubber.stop();
