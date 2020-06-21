@@ -6,7 +6,7 @@ class GenericWhen<TWorld extends World> extends WhenWithWorld<TWorld> {
   String _pattern;
   Zero<TWorld> _step;
 
-  GenericWhen(this._pattern, this._step);
+  GenericWhen(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep() async {
@@ -17,8 +17,8 @@ class GenericWhen<TWorld extends World> extends WhenWithWorld<TWorld> {
   RegExp get pattern => RegExp(_pattern);
 }
 
-GenericWhen when<TWorld extends World>(String pattern, Zero<TWorld> step) {
-  return GenericWhen<TWorld>(pattern, step);
+GenericWhen when<TWorld extends World>(String pattern, Zero<TWorld> step,[StepDefinitionConfiguration configuration]) {
+  return GenericWhen<TWorld>(pattern, step,configuration);
 }
 
 class GenericWhen1<TWorld extends World, Input1>
@@ -26,7 +26,7 @@ class GenericWhen1<TWorld extends World, Input1>
   String _pattern;
   One<TWorld, Input1> _step;
 
-  GenericWhen1(this._pattern, this._step);
+  GenericWhen1(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first) async {
@@ -38,8 +38,8 @@ class GenericWhen1<TWorld extends World, Input1>
 }
 
 GenericWhen1 when1<TWorld extends World, Input1>(
-    String pattern, One<TWorld, Input1> step) {
-  return GenericWhen1<TWorld, Input1>(pattern, step);
+    String pattern, One<TWorld, Input1> step,[StepDefinitionConfiguration configuration]) {
+  return GenericWhen1<TWorld, Input1>(pattern, step,configuration);
 }
 
 class GenericWhen2<TWorld extends World, Input1, Input2>
@@ -47,7 +47,7 @@ class GenericWhen2<TWorld extends World, Input1, Input2>
   String _pattern;
   Two<TWorld, Input1, Input2> _step;
 
-  GenericWhen2(this._pattern, this._step);
+  GenericWhen2(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second) async {
@@ -59,8 +59,8 @@ class GenericWhen2<TWorld extends World, Input1, Input2>
 }
 
 GenericWhen2 when2<TWorld extends World, Input1, Input2>(
-    String pattern, Two<TWorld, Input1, Input2> step) {
-  return GenericWhen2<TWorld, Input1, Input2>(pattern, step);
+    String pattern, Two<TWorld, Input1, Input2> step,[StepDefinitionConfiguration configuration]) {
+  return GenericWhen2<TWorld, Input1, Input2>(pattern, step,configuration);
 }
 
 class GenericWhen3<TWorld extends World, Input1, Input2, Input3>
@@ -68,7 +68,7 @@ class GenericWhen3<TWorld extends World, Input1, Input2, Input3>
   String _pattern;
   Three<TWorld, Input1, Input2, Input3> _step;
 
-  GenericWhen3(this._pattern, this._step);
+  GenericWhen3(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second, Input3 third) async {
@@ -80,8 +80,8 @@ class GenericWhen3<TWorld extends World, Input1, Input2, Input3>
 }
 
 GenericWhen3 when3<TWorld extends World, Input1, Input2, Input3>(
-    String pattern, Three<TWorld, Input1, Input2, Input3> step) {
-  return GenericWhen3<TWorld, Input1, Input2, Input3>(pattern, step);
+    String pattern, Three<TWorld, Input1, Input2, Input3> step,[StepDefinitionConfiguration configuration]) {
+  return GenericWhen3<TWorld, Input1, Input2, Input3>(pattern, step,configuration);
 }
 
 class GenericWhen4<TWorld extends World, Input1, Input2, Input3, Input4>
@@ -89,7 +89,7 @@ class GenericWhen4<TWorld extends World, Input1, Input2, Input3, Input4>
   String _pattern;
   Four<TWorld, Input1, Input2, Input3, Input4> _step;
 
-  GenericWhen4(this._pattern, this._step);
+  GenericWhen4(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(
@@ -102,16 +102,17 @@ class GenericWhen4<TWorld extends World, Input1, Input2, Input3, Input4>
 }
 
 GenericWhen4 when4<TWorld extends World, Input1, Input2, Input3, Input4>(
-    String pattern, Four<TWorld, Input1, Input2, Input3, Input4> step) {
-  return GenericWhen4<TWorld, Input1, Input2, Input3, Input4>(pattern, step);
+    String pattern, Four<TWorld, Input1, Input2, Input3, Input4> step,[StepDefinitionConfiguration configuration]) {
+  return GenericWhen4<TWorld, Input1, Input2, Input3, Input4>(pattern, step,configuration);
 }
 
-class GenericWhen5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>
+class GenericWhen5<TWorld extends World, Input1, Input2, Input3, Input4,
+Input5>
     extends When5WithWorld<Input1, Input2, Input3, Input4, Input5, TWorld> {
   String _pattern;
   Five<TWorld, Input1, Input2, Input3, Input4, Input5> _step;
 
-  GenericWhen5(this._pattern, this._step);
+  GenericWhen5(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second, Input3 third,
@@ -124,9 +125,9 @@ class GenericWhen5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>
 }
 
 GenericWhen5
-    when5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>(
-        String pattern,
-        Five<TWorld, Input1, Input2, Input3, Input4, Input5> step) {
+when5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>(
+    String pattern,
+    Five<TWorld, Input1, Input2, Input3, Input4, Input5> step,[StepDefinitionConfiguration configuration]) {
   return GenericWhen5<TWorld, Input1, Input2, Input3, Input4, Input5>(
-      pattern, step);
+      pattern, step,configuration);
 }

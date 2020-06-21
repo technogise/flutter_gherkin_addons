@@ -6,7 +6,7 @@ class GenericThen<TWorld extends World> extends ThenWithWorld<TWorld> {
   String _pattern;
   Zero<TWorld> _step;
 
-  GenericThen(this._pattern, this._step);
+  GenericThen(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep() async {
@@ -17,8 +17,8 @@ class GenericThen<TWorld extends World> extends ThenWithWorld<TWorld> {
   RegExp get pattern => RegExp(_pattern);
 }
 
-GenericThen then<TWorld extends World>(String pattern, Zero<TWorld> step) {
-  return GenericThen<TWorld>(pattern, step);
+GenericThen then<TWorld extends World>(String pattern, Zero<TWorld> step,[StepDefinitionConfiguration configuration]) {
+  return GenericThen<TWorld>(pattern, step,configuration);
 }
 
 class GenericThen1<TWorld extends World, Input1>
@@ -26,7 +26,7 @@ class GenericThen1<TWorld extends World, Input1>
   String _pattern;
   One<TWorld, Input1> _step;
 
-  GenericThen1(this._pattern, this._step);
+  GenericThen1(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first) async {
@@ -38,8 +38,8 @@ class GenericThen1<TWorld extends World, Input1>
 }
 
 GenericThen1 then1<TWorld extends World, Input1>(
-    String pattern, One<TWorld, Input1> step) {
-  return GenericThen1<TWorld, Input1>(pattern, step);
+    String pattern, One<TWorld, Input1> step,[StepDefinitionConfiguration configuration]) {
+  return GenericThen1<TWorld, Input1>(pattern, step,configuration);
 }
 
 class GenericThen2<TWorld extends World, Input1, Input2>
@@ -47,7 +47,7 @@ class GenericThen2<TWorld extends World, Input1, Input2>
   String _pattern;
   Two<TWorld, Input1, Input2> _step;
 
-  GenericThen2(this._pattern, this._step);
+  GenericThen2(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second) async {
@@ -59,8 +59,8 @@ class GenericThen2<TWorld extends World, Input1, Input2>
 }
 
 GenericThen2 then2<TWorld extends World, Input1, Input2>(
-    String pattern, Two<TWorld, Input1, Input2> step) {
-  return GenericThen2<TWorld, Input1, Input2>(pattern, step);
+    String pattern, Two<TWorld, Input1, Input2> step,[StepDefinitionConfiguration configuration]) {
+  return GenericThen2<TWorld, Input1, Input2>(pattern, step,configuration);
 }
 
 class GenericThen3<TWorld extends World, Input1, Input2, Input3>
@@ -68,7 +68,7 @@ class GenericThen3<TWorld extends World, Input1, Input2, Input3>
   String _pattern;
   Three<TWorld, Input1, Input2, Input3> _step;
 
-  GenericThen3(this._pattern, this._step);
+  GenericThen3(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second, Input3 third) async {
@@ -80,8 +80,8 @@ class GenericThen3<TWorld extends World, Input1, Input2, Input3>
 }
 
 GenericThen3 then3<TWorld extends World, Input1, Input2, Input3>(
-    String pattern, Three<TWorld, Input1, Input2, Input3> step) {
-  return GenericThen3<TWorld, Input1, Input2, Input3>(pattern, step);
+    String pattern, Three<TWorld, Input1, Input2, Input3> step,[StepDefinitionConfiguration configuration]) {
+  return GenericThen3<TWorld, Input1, Input2, Input3>(pattern, step,configuration);
 }
 
 class GenericThen4<TWorld extends World, Input1, Input2, Input3, Input4>
@@ -89,7 +89,7 @@ class GenericThen4<TWorld extends World, Input1, Input2, Input3, Input4>
   String _pattern;
   Four<TWorld, Input1, Input2, Input3, Input4> _step;
 
-  GenericThen4(this._pattern, this._step);
+  GenericThen4(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(
@@ -102,16 +102,17 @@ class GenericThen4<TWorld extends World, Input1, Input2, Input3, Input4>
 }
 
 GenericThen4 then4<TWorld extends World, Input1, Input2, Input3, Input4>(
-    String pattern, Four<TWorld, Input1, Input2, Input3, Input4> step) {
-  return GenericThen4<TWorld, Input1, Input2, Input3, Input4>(pattern, step);
+    String pattern, Four<TWorld, Input1, Input2, Input3, Input4> step,[StepDefinitionConfiguration configuration]) {
+  return GenericThen4<TWorld, Input1, Input2, Input3, Input4>(pattern, step,configuration);
 }
 
-class GenericThen5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>
+class GenericThen5<TWorld extends World, Input1, Input2, Input3, Input4,
+Input5>
     extends Then5WithWorld<Input1, Input2, Input3, Input4, Input5, TWorld> {
   String _pattern;
   Five<TWorld, Input1, Input2, Input3, Input4, Input5> _step;
 
-  GenericThen5(this._pattern, this._step);
+  GenericThen5(this._pattern, this._step,[StepDefinitionConfiguration configuration]):super(configuration);
 
   @override
   Future<void> executeStep(Input1 first, Input2 second, Input3 third,
@@ -124,9 +125,9 @@ class GenericThen5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>
 }
 
 GenericThen5
-    then5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>(
-        String pattern,
-        Five<TWorld, Input1, Input2, Input3, Input4, Input5> step) {
+then5<TWorld extends World, Input1, Input2, Input3, Input4, Input5>(
+    String pattern,
+    Five<TWorld, Input1, Input2, Input3, Input4, Input5> step,[StepDefinitionConfiguration configuration]) {
   return GenericThen5<TWorld, Input1, Input2, Input3, Input4, Input5>(
-      pattern, step);
+      pattern, step,configuration);
 }
