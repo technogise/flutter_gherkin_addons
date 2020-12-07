@@ -11,6 +11,9 @@ import 'package:yaml/yaml.dart';
 
 class TestRuntime {
   static Stubber _stubber;
+
+  static Set<Uri> get missingStubs => _stubber.missingStubs;
+
   static addStub(Stub stub){
     _stubber.stub(stub);
   }
