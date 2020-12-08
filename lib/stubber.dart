@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:mock_web_server/mock_web_server.dart';
 
 class Stubber {
-  Set<Uri> missingStubs = Set<Uri>();
+  Future<void> Function(HttpRequest request) onMissingStub;
+
+  Stubber({this.onMissingStub});
 
   MockWebServer _mockWebServer = MockWebServer(port: 8081);
 
@@ -35,7 +37,9 @@ class Stubber {
         ..body = _response._body
         ..headers = _response.headers;
     } else {
-      missingStubs.add(request.requestedUri);
+      if (onMissingStub != null) {
+        await onMissingStub(request);
+      }
     }
     return _defaultAnswer;
   }
